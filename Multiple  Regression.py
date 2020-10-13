@@ -16,14 +16,14 @@ import  matplotlib.pyplot as plt
 dataset = pd.read_csv('insurance.csv')
 dataset.head()
 
-#Creating the Matrix of features and Target variable vector
+#Creating the Matrix of Features and Target variable vector
 X=dataset.iloc[:,:-1].values
 y=dataset.iloc[:,-1].values
 y = y.reshape(len(y),1)
 print(X)
 print(y)
 
-# Encoding Categorical Variables
+# Encoding Categorical variables "sex" and "smoker"
 from sklearn.preprocessing import LabelEncoder
 le=LabelEncoder() #() Everything we are not specifying
 X[:,1]=le.fit_transform(X[:,1]) 
@@ -31,10 +31,10 @@ print(X[:,1])
 X[:,4]=le.fit_transform(X[:,4]) 
 print(X[:,4])
 
-#OneHotEncoding of the variable Region
+#OneHotEncoding of the variable "region"
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import OneHotEncoder
-ct=ColumnTransformer(transformers=[('encoder',OneHotEncoder(),[5])], remainder='passthrough') #[0] is the country column index 
+ct=ColumnTransformer(transformers=[('encoder',OneHotEncoder(),[5])], remainder='passthrough') 
 X=np.array(ct.fit_transform(X))
 print(X)
 
@@ -49,7 +49,7 @@ sc_y = StandardScaler()
 X_train = sc_X.fit_transform(X_train)
 y_train = sc_y.fit_transform(y_train)
 
-# Training the Multiple Regression model on the Training set
+# Training the Multiple Regression algorthim on the Training set
 from sklearn.linear_model import LinearRegression
 regressor = LinearRegression()
 regressor.fit(X_train, y_train)
