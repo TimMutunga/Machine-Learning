@@ -1,2 +1,2 @@
 # Machine-Learning
-Several Machine Learning Algorithms evaluated for different datasets.
+Training several Machine Learning algorithms for regression tasks
